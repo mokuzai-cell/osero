@@ -1,0 +1,12 @@
+.control{
+    display:flex;
+    align-items: center;
+    gap:16px;
+}
+#log{
+    border:1px solid black;
+    margin:4px;
+    padding:4px;
+    height:10.5lh;
+    overflow-y: auto;
+}
