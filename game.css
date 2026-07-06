@@ -10,3 +10,50 @@
     height:10.5lh;
     overflow-y: auto;
 }
+
+
+body {
+  margin: 0;
+  /* 画面全体の高さを確保 */
+  min-height: 100vh;
+  /* スクロールバーでアニメーションが途切れないように固定 */
+  background-attachment: fixed;
+
+  /* --- 虹色アニメーションの設定 --- */
+
+  /* 1. 非常に長い虹色グラデーションを作成 (色の順番: 赤→紫) */
+  background-image: linear-gradient(
+    45deg,
+    #ff0000, /* 赤 */
+    #ff7f00, /* 橙 */
+    #ffff00, /* 黄 */
+    #00ff00, /* 緑 */
+    #00ffff, /* 水色 (追加すると滑らかになります) */
+    #0000ff, /* 青 */
+    #8b00ff, /* 紫 */
+    #ff0000  /* 最後に赤に戻すことでループを滑らかに */
+  );
+
+  /* 2. 背景のサイズを画面の数倍に拡大する (ここがポイント！) */
+  background-size: 800% 800%;
+
+  /* 3. アニメーションを適用 */
+  /* 名前: rainbowScroll, 時間: 20秒 (長いほどゆっくり), タイミング: 一定, 回数: 無限 */
+  animation: rainbowScroll 20s linear infinite;
+}
+
+/* --- アニメーションの動きを定義 (キーフレーム) --- */
+@keyframes rainbowScroll {
+  0% {
+    /* グラデーションの左上を表示 */
+    background-position: 0% 50%;
+  }
+  50% {
+    /* グラデーションを中央まで動かす */
+    background-position: 100% 50%;
+  }
+  100% {
+    /* 最後に元の位置(0%)に戻すことで、ループさせる */
+    background-position: 0% 50%;
+  }
+}
